@@ -10,52 +10,49 @@ namespace CustonPlayerPins
     {
         static AccessTools.FieldRef<PlayerMapLayer, ICoreClientAPI> capiRef =
             AccessTools.FieldRefAccess<PlayerMapLayer, ICoreClientAPI>("capi");
-        
+
         static AccessTools.FieldRef<PlayerMapLayer, LoadedTexture> ownTextureRef =
             AccessTools.FieldRefAccess<PlayerMapLayer, LoadedTexture>("ownTexture");
-        
-        
+
+
         static AccessTools.FieldRef<PlayerMapLayer, LoadedTexture> otherTextureRef =
             AccessTools.FieldRefAccess<PlayerMapLayer, LoadedTexture>("otherTexture");
-        
+
         static void Prefix(PlayerMapLayer __instance)
         {
-            // TODO: Clear old textures each time the map opens and use custom colours.
             var capi = capiRef(__instance);
-            if (ownTextureRef(__instance) == null)
+
+            var selfRgba = new[]
             {
-                var surface = new ImageSurface(Format.Argb32, 32, 32);
-                var cr = new Context(surface);
-                cr.SetSourceRGBA(0.0, 0.0, 0.0, 0.0);
-                cr.Paint();
-                capi.Gui.Icons.DrawMapPlayer(cr, 0, 0, 32f, 32f, new double[4]
-                {
-                    1.0,
-                    1.0,
-                    0.0,
-                    1.0
-                }, new double[4]{ 1.0, 0, 1.0, 1.0 });
-                ownTextureRef(__instance) = new LoadedTexture(capi, capi.Gui.LoadCairoTexture(surface, false), 16, 16);
-                cr.Dispose();
-                surface.Dispose();
-            }
-            if (otherTextureRef(__instance) == null)
+                ModSettings.PlayerPinR / 255d,
+                ModSettings.PlayerPinG / 225d,
+                ModSettings.PlayerPinB / 255d,
+                ModSettings.PlayerPinA / 255d
+            };
+            var surfaceSelf = new ImageSurface(Format.Argb32, 32, 32);
+            var crSelf = new Context(surfaceSelf);
+            crSelf.SetSourceRGBA(0.0, 0.0, 0.0, 0.0);
+            crSelf.Paint();
+            capi.Gui.Icons.DrawMapPlayer(crSelf, 0, 0, 32f, 32f, selfRgba, selfRgba);
+            ownTextureRef(__instance) = new LoadedTexture(capi, capi.Gui.LoadCairoTexture(surfaceSelf, false), 16, 16);
+            crSelf.Dispose();
+            surfaceSelf.Dispose();
+
+            var otherRgba = new[]
             {
-                var surface = new ImageSurface(Format.Argb32, 32, 32);
-                var cr = new Context(surface);
-                cr.SetSourceRGBA(0.0, 0.0, 0.0, 0.0);
-                cr.Paint();
-                capi.Gui.Icons.DrawMapPlayer(cr, 0, 0, 32f, 32f, new double[4]
-                {
-                    1.0,
-                    0,
-                    1.0,
-                    1.0
-                }, new double[4]{ 1.0, 1.0, 0, 1.0 });
-                otherTextureRef(__instance) = new LoadedTexture(capi, capi.Gui.LoadCairoTexture(surface, false), 16, 16);
-                cr.Dispose();
-                surface.Dispose();
-            }
+                ModSettings.OthersPinR / 255d,
+                ModSettings.OthersPinG / 255d,
+                ModSettings.OthersPinB / 255d,
+                ModSettings.OthersPinA / 255d
+            };
+            var surfaceOther = new ImageSurface(Format.Argb32, 32, 32);
+            var crOther = new Context(surfaceOther);
+            crOther.SetSourceRGBA(0.0, 0.0, 0.0, 0.0);
+            crOther.Paint();
+            capi.Gui.Icons.DrawMapPlayer(crOther, 0, 0, 32f, 32f, otherRgba, otherRgba);
+            otherTextureRef(__instance) = new LoadedTexture(capi, capi.Gui.LoadCairoTexture(surfaceOther, false), 16, 16);
+            crOther.Dispose();
+            surfaceOther.Dispose();
         }
     }
 }

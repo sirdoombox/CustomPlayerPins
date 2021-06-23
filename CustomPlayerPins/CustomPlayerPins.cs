@@ -6,6 +6,8 @@ namespace CustonPlayerPins
 {
     public class CustomPlayerPins : ModSystem
     {
+        private ICoreClientAPI capi;
+        
         public override bool ShouldLoad(EnumAppSide forSide)
         {
             return forSide == EnumAppSide.Client;
@@ -14,9 +16,12 @@ namespace CustonPlayerPins
         public override void StartClientSide(ICoreClientAPI api)
         {
             // TODO: Implement options screen and saving of colour data locally.
-
+            capi = api;
             base.StartClientSide(api);
 
+            if (!ModSettings.HasBeenInitialised)
+                SetDefaults();
+            
             api.Input.RegisterHotKey("customisePlayerPins", "Customise Player Pins", GlKeys.M,
                 HotkeyType.GUIOrOtherControls, shiftPressed: true);
             api.Input.SetHotKeyHandler("customisePlayerPins", ShowCustomisationDialog);
@@ -25,9 +30,22 @@ namespace CustonPlayerPins
             harmony.PatchAll();
         }
 
-        private bool ShowCustomisationDialog(KeyCombination t1)
+        private void SetDefaults()
         {
-            throw new System.NotImplementedException();
+            ModSettings.PlayerPinR = 255;
+            ModSettings.PlayerPinG = 255;
+            ModSettings.PlayerPinB = 255;
+            ModSettings.PlayerPinA = 255;
+            ModSettings.OthersPinR = 76;
+            ModSettings.OthersPinG = 76;
+            ModSettings.OthersPinB = 76;
+            ModSettings.OthersPinA = 255;
+        }
+
+        private bool ShowCustomisationDialog(KeyCombination comb)
+        {
+            new CustomisePinsDialog(capi, true).TryOpen();
+            return true;
         }
     }
 }

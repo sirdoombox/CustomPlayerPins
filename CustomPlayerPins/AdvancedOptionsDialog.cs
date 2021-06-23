@@ -2,26 +2,21 @@ using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace CustonPlayerPins
 {
     public abstract class AdvancedOptionsDialog : GuiDialog
     {
-        public class ConfigOption
+        protected class ConfigOption
         {
-            public string SwitchKey;
             public string SliderKey;
-
             public string Text;
             public string Tooltip;
-
-            public Action<bool> ToggleAction;
             public ActionConsumable<int> SlideAction;
-
-            public bool InstantSlider;
         }
 
-        protected List<ConfigOption> ConfigOptions = new List<ConfigOption>();
+        private readonly List<ConfigOption> _configOptions = new List<ConfigOption>();
         private bool _isSetup;
         
         protected AdvancedOptionsDialog(ICoreClientAPI capi) : base(capi)
@@ -30,7 +25,7 @@ namespace CustonPlayerPins
 
         protected void RegisterOption(ConfigOption option)
         {
-            ConfigOptions.Add(option);
+            _configOptions.Add(option);
         }
 
         protected void SetupDialog()
@@ -56,7 +51,7 @@ namespace CustonPlayerPins
                 .AddDialogTitleBar(DialogTitle, OnTitleBarCloseClicked)
                 .BeginChildElements(bgBounds);
 
-            foreach (var option in ConfigOptions)
+            foreach (var option in _configOptions)
             {
                 composer.AddStaticText(option.Text, font, textBounds);
                 if (option.Tooltip != null)
@@ -69,21 +64,19 @@ namespace CustonPlayerPins
                     composer.AddSlider(option.SlideAction, switchBounds.FlatCopy().WithFixedWidth(sliderWidth),
                         option.SliderKey);
                 }
-                else if (option.SwitchKey != null)
-                {
-                    composer.AddSwitch(option.ToggleAction, switchBounds, option.SwitchKey, switchSize);
-                }
 
                 textBounds = textBounds.BelowCopy(fixedDeltaY: switchPadding);
                 switchBounds = switchBounds.BelowCopy(fixedDeltaY: switchPadding);
             }
 
-            SingleComposer = composer.EndChildElements().Compose();
+            SingleComposer.AddCustomRender(textBounds, (time, bounds) =>
+            {
+                // TODO: Figure out how to customise the colour.
+                bounds.
+                capi.Render.Render2DTexture(textBounds.);
+            });
 
-            // foreach (var option in ConfigOptions.Where(option => option.SliderKey != null && !option.InstantSlider))
-            // {
-            //     SingleComposer.GetSlider(option.SliderKey).TriggerOnlyOnMouseUp();
-            // }
+            SingleComposer = composer.EndChildElements().Compose();
         }
         
         public override bool TryOpen()

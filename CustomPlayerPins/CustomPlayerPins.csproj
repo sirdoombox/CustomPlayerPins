@@ -40,6 +40,10 @@
             <HintPath>G:\VintagestoryModding\VintagestoryAPI.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="VintagestoryLib">
+            <HintPath>G:\VintagestoryModding\VintagestoryLib.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
         <Reference Include="VSSurvivalMod">
             <HintPath>G:\VintagestoryModding\Mods\VSSurvivalMod.dll</HintPath>
             <Private>False</Private>
@@ -66,6 +70,7 @@
         <Compile Include="CustomisePinsDialog.cs" />
         <Compile Include="CustomPlayerPins.cs" />
         <Compile Include="MapPinPatch.cs" />
+        <Compile Include="ModSettings.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
