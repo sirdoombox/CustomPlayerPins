@@ -69,6 +69,7 @@ namespace CustonPlayerPins
                 switchBounds = switchBounds.BelowCopy(fixedDeltaY: switchPadding);
             }
 
+            // IMPORTANT: AddDynamicCustomDraw - Use Cairo inside that to draw.
             SingleComposer.AddCustomRender(textBounds, (time, bounds) =>
             {
                 // TODO: Figure out how to customise the colour.
