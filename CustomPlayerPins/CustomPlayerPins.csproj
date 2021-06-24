@@ -44,16 +44,8 @@
             <HintPath>G:\VintagestoryModding\VintagestoryLib.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="VSSurvivalMod">
-            <HintPath>G:\VintagestoryModding\Mods\VSSurvivalMod.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
         <Reference Include="VSEssentials">
             <HintPath>G:\VintagestoryModding\Mods\VSEssentials.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="VSCreativeMod">
-            <HintPath>G:\VintagestoryModding\Mods\VSCreativeMod.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="Harmony">

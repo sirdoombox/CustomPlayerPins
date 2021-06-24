@@ -39,6 +39,9 @@ using Vintagestory.API.Common;
 [assembly: ModInfo(
     "Custom Player Pins", 
     "customplayerpins", 
-    Version = "1.0.0", 
-    Authors = new string[] { "Doombox" }
-    , Description = "Allows you to customise the way player pins look on the map.")]
+    Version = "1.0.0",
+    RequiredOnClient = true,
+    RequiredOnServer = false,
+    Side = "client",
+    Authors = new[] { "Doombox" },
+    Description = "Allows you to customise the way player pins look on the map.")]
