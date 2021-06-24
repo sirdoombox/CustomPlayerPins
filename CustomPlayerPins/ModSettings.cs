@@ -30,6 +30,12 @@ namespace CustonPlayerPins
             set => ClientSettings.Inst.Int["customplayerpins_playerPinA"] = value;
         }
 
+        public static int PlayerPinScale
+        {
+            get => ClientSettings.Inst.GetIntSetting("customplayerpins_playerPinScale");
+            set => ClientSettings.Inst.Int["customplayerpins_playerPinScale"] = value;
+        }
+
         public static int OthersPinR
         {
             get => ClientSettings.Inst.GetIntSetting("customplayerpins_othersPinR");
@@ -52,6 +58,12 @@ namespace CustonPlayerPins
         {
             get => ClientSettings.Inst.GetIntSetting("customplayerpins_othersPinA");
             set => ClientSettings.Inst.Int["customplayerpins_othersPinA"] = value;
+        }
+
+        public static int OthersPinScale
+        {
+            get => ClientSettings.Inst.GetIntSetting("customplayerpins_othersPinScale");
+            set => ClientSettings.Inst.Int["customplayerpins_othersPinScale"] = value;
         }
     }
 }

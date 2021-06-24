@@ -66,9 +66,9 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="AdvancedOptionsDialog.cs" />
+        <Compile Include="ConfigDialog.cs" />
         <Compile Include="CustomisePinsDialog.cs" />
-        <Compile Include="CustomPlayerPins.cs" />
+        <Compile Include="CustomPlayerPinsMod.cs" />
         <Compile Include="MapPinPatch.cs" />
         <Compile Include="ModSettings.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

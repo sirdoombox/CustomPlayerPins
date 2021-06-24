@@ -41,4 +41,4 @@ using Vintagestory.API.Common;
     "customplayerpins", 
     Version = "1.0.0", 
     Authors = new string[] { "Doombox" }
-    , Description = "Allows you to customise the player pins on the map.")]
+    , Description = "Allows you to customise the way player pins look on the map.")]
