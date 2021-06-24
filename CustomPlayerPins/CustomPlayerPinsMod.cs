@@ -2,7 +2,7 @@ using HarmonyLib;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 
-namespace CustonPlayerPins
+namespace CustomPlayerPins
 {
     public class CustomPlayerPinsMod : ModSystem
     {

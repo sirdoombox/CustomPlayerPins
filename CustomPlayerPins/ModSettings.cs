@@ -1,6 +1,6 @@
 using Vintagestory.Client.NoObf;
 
-namespace CustonPlayerPins
+namespace CustomPlayerPins
 {
     public static class ModSettings
     {

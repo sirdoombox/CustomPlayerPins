@@ -3,7 +3,7 @@ using Cairo;
 using Vintagestory.API.Client;
 using Vintagestory.GameContent;
 
-namespace CustonPlayerPins
+namespace CustomPlayerPins
 {
     // TODO Implement reusable GUI which swaps out Self/Others
     public class CustomisePinsDialog : GuiDialog

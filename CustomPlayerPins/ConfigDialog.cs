@@ -1,6 +1,6 @@
 using Vintagestory.API.Client;
 
-namespace CustonPlayerPins
+namespace CustomPlayerPins
 {
     public class ConfigDialog : GuiDialog
     {

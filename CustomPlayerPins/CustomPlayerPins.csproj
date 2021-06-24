@@ -7,7 +7,7 @@
         <ProjectGuid>{2893E0FF-7A68-479C-902F-D1F9F3BDDD10}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>CustonPlayerPins</RootNamespace>
+        <RootNamespace>CustomPlayerPins</RootNamespace>
         <AssemblyName>CustomPlayerPins</AssemblyName>
         <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>

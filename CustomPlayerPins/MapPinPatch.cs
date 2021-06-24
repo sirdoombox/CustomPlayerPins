@@ -3,7 +3,7 @@ using HarmonyLib;
 using Vintagestory.API.Client;
 using Vintagestory.GameContent;
 
-namespace CustonPlayerPins
+namespace CustomPlayerPins
 {
     [HarmonyPatch(typeof(PlayerMapLayer), "OnMapOpenedClient")]
     public class MapPinPatch
