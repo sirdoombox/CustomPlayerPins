@@ -1,3 +1,4 @@
+using System.Reflection;
 using HarmonyLib;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -36,7 +37,7 @@ namespace CustomPlayerPins
             api.Input.SetHotKeyHandler("customisePlayerPins", ShowCustomisationDialog);
 
             var harmony = new Harmony("customplayerpins.patches");
-            harmony.PatchAll();
+            harmony.PatchAll(Assembly.GetAssembly(typeof(CustomPlayerPinsMod)));
         }
 
         private void SetDefaults()
@@ -67,5 +68,7 @@ namespace CustomPlayerPins
             ConfigDialog.TryOpen();
             return true;
         }
+
+        public override double ExecuteOrder() => 10000d;
     }
 }

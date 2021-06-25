@@ -99,15 +99,6 @@ namespace CustomPlayerPins
             composer.AddStaticText($"{_displayStr} Scale", font, textBounds);
             composer.AddHoverText($"The scale adjustment to apply to the {_displayStr.ToLower()}'s pin scale.", font, 260, textBounds);
             composer.AddSlider(OnScaleChanged, sliderBounds.FlatCopy().WithFixedWidth(sliderWidth), "sliderScale");
-            
-            // Doesn't seem to be a reasonable way to persist the context to draw dynamic content.
-            // composer.AddDynamicCustomDraw(textBounds.FlatCopy().WithFixedWidth(textBounds.fixedWidth + sliderWidth + 10),
-            //     (cr, surface, bounds) =>
-            //     {
-            //         cr.SetSourceRGBA(1,1,1,1);
-            //         cr.Rectangle(0, 0, surface.Width, surface.Height);
-            //         cr.Fill();
-            //     });
 
             SingleComposer = composer.EndChildElements().Compose();
         }
